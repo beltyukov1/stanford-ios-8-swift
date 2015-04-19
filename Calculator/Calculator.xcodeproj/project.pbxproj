@@ -13,6 +13,7 @@
 		FAA4F6481AC7398900E95104 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA4F6471AC7398900E95104 /* Images.xcassets */; };
 		FAA4F64B1AC7398900E95104 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA4F6491AC7398900E95104 /* LaunchScreen.xib */; };
 		FAA4F6571AC7398900E95104 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4F6561AC7398900E95104 /* CalculatorTests.swift */; };
+		FAF7DA4A1AD1EDB70083FE07 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7DA491AD1EDB70083FE07 /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		FAA4F6501AC7398900E95104 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA4F6551AC7398900E95104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA4F6561AC7398900E95104 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		FAF7DA491AD1EDB70083FE07 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				FAA4F6421AC7398900E95104 /* ViewController.swift */,
 				FAA4F6441AC7398900E95104 /* Main.storyboard */,
 				FAA4F63E1AC7398900E95104 /* Supporting Files */,
+				FAF7DA491AD1EDB70083FE07 /* CalculatorBrain.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF7DA4A1AD1EDB70083FE07 /* CalculatorBrain.swift in Sources */,
 				FAA4F6431AC7398900E95104 /* ViewController.swift in Sources */,
 				FAA4F6411AC7398900E95104 /* AppDelegate.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				FAA4F65C1AC7398900E95104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAA4F65D1AC7398900E95104 /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				FAA4F65F1AC7398900E95104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

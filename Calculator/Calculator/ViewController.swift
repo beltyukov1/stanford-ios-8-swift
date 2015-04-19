@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
     var userIsInMiddleOfTypingNumber = false
+    var calculatorBrain = CalculatorBrain()
     
     @IBAction func clear() {
         display.text! = "0"
         history.text! = " "
-        operandStack = []
     }
     
     @IBAction func appendDigit(sender: UIButton) {
@@ -36,44 +36,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operate(sender: UIButton) {
-        let operation = sender.currentTitle!
         if userIsInMiddleOfTypingNumber {
             enter()
         }
-        history.text! += " \(operation)"
-        switch operation {
-        case "×": performOperation { $0 * $1 }
-        case "÷": performOperation { $1 / $0 }
-        case "+": performOperation { $0 + $1 }
-        case "−": performOperation { $1 - $0 }
-        case "√": performOperation { sqrt($0) }
-        case "sin": performOperation { sin($0) }
-        case "cos": performOperation { cos($0) }
-        case "∏": displayValue = M_PI; enter()
-        default: break
+        if let operation = sender.currentTitle, result = calculatorBrain.performOperation(operation) {
+            history.text! += " \(operation)"
+            displayValue = result
+        } else {
+            displayValue = 0
         }
     }
-    
-    func performOperation(operation: (Double, Double) -> Double) {
-        if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
-            enter()
-        }
-    }
-    
-    func performOperation(operation: Double -> Double) {
-        if operandStack.count >= 1 {
-            displayValue = operation(operandStack.removeLast())
-            enter()
-        }
-    }
-    
-    var operandStack = Array<Double>()
+
     @IBAction func enter() {
         userIsInMiddleOfTypingNumber = false
-        operandStack.append(displayValue)
         history.text! += "  "
-        println("Operand stack: \(operandStack)")
+        if let result = calculatorBrain.pushOperand(displayValue) {
+            displayValue = result
+        } else {
+            displayValue = 0
+        }
     }
     
     var displayValue: Double {
