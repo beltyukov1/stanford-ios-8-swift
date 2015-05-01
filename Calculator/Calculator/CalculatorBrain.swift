@@ -12,6 +12,7 @@ class CalculatorBrain {
     
     private enum Op: Printable {
         case Operand(Double)
+        case Constant(String, Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
         
@@ -20,6 +21,8 @@ class CalculatorBrain {
                 switch self {
                 case .Operand(let operand):
                     return "\(operand)"
+                case .Constant(let symbol, _):
+                    return symbol
                 case .UnaryOperation (let symbol, _):
                     return symbol
                 case .BinaryOperation(let symbol, _):
@@ -40,11 +43,16 @@ class CalculatorBrain {
         learnOp(Op.BinaryOperation("×", *))
         learnOp(Op.BinaryOperation("÷") { $1 / $0 })
         learnOp(Op.UnaryOperation("√", sqrt))
+        learnOp(Op.UnaryOperation("sin") { sin($0) })
+        learnOp(Op.UnaryOperation("cos") { cos($0) })
+        learnOp(Op.Constant("∏", M_PI))
     }
     
     func evaluate() -> Double? {
         let (result, remainder) = evaluate(opStack)
-        println("\(opStack) = \(result) with remainder \(remainder)")
+        if let evaluateResult = result {
+            println("\(opStack) = \(evaluateResult) with remainder \(remainder)")
+        }
         return result
     }
     
@@ -55,6 +63,8 @@ class CalculatorBrain {
             switch op {
             case .Operand(let operand):
                 return (operand, remainingOps)
+            case .Constant(_, let value):
+                return (value, remainingOps)
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = evaluate(remainingOps)
                 if let operand = operandEvaluation.result {
@@ -74,6 +84,10 @@ class CalculatorBrain {
     }
     
     private var opStack = [Op]()
+    
+    func clearOpStack() {
+        opStack.removeAll(keepCapacity: false)
+    }
     
     func pushOperand(operand: Double) -> Double? {
         opStack.append(Op.Operand(operand))

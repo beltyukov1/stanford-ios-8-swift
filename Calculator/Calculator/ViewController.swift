@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     var calculatorBrain = CalculatorBrain()
     
     @IBAction func clear() {
-        display.text! = "0"
+        displayValue = 0
         history.text! = " "
+        calculatorBrain.clearOpStack()
     }
     
     @IBAction func appendDigit(sender: UIButton) {
@@ -43,26 +44,26 @@ class ViewController: UIViewController {
             history.text! += " \(operation)"
             displayValue = result
         } else {
-            displayValue = 0
+            clear()
         }
     }
 
     @IBAction func enter() {
         userIsInMiddleOfTypingNumber = false
         history.text! += "  "
-        if let result = calculatorBrain.pushOperand(displayValue) {
+        if let value = displayValue, result = calculatorBrain.pushOperand(value) {
             displayValue = result
         } else {
-            displayValue = 0
+            clear()
         }
     }
     
-    var displayValue: Double {
+    var displayValue: Double? {
         get {
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set {
-            display.text = "\(newValue)"
+            display.text = "\(newValue!)"
             userIsInMiddleOfTypingNumber = false
         }
     }
