@@ -33,11 +33,6 @@ class ViewController: UIViewController {
             display.text! = digit
             userIsInMiddleOfTypingNumber = true
         }
-//        history.text! += " \(digit)"
-    }
-    
-    @IBAction func viewHistory() {
-        println("HISTORY: \(calculatorBrain.description)")
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -45,19 +40,19 @@ class ViewController: UIViewController {
             enter()
         }
         if let operation = sender.currentTitle, result = calculatorBrain.performOperation(operation) {
-            history.text! = calculatorBrain.description
             displayValue = result
         } else {
-            clear()
+            display.text! = " "
         }
+        
+        history.text! = calculatorBrain.description
     }
 
     @IBAction func enter() {
-        userIsInMiddleOfTypingNumber = false
         if let value = displayValue, result = calculatorBrain.pushOperand(value) {
             displayValue = result
         } else {
-            clear()
+            display.text! = " "
         }
     }
     

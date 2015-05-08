@@ -52,24 +52,28 @@ class CalculatorBrain {
     }
     
     var description: String {
-        var finalHistory = " "
+        var historyArray = [String]()
         var (history, remainingOps) = description(opStack)
         if let unwrappedHistory = history {
-            finalHistory = unwrappedHistory
+            historyArray.append(unwrappedHistory)
         }
         
+        var joiner = ""
         while !remainingOps.isEmpty {
+            joiner = ", "
             (history, remainingOps) = description(remainingOps)
             if let unwrappedHistory = history {
-                finalHistory += ", \(unwrappedHistory)"
+                historyArray.append(unwrappedHistory)
             }
         }
         
-        return finalHistory
+        historyArray = historyArray.reverse()
+        
+        return "\(joiner.join(historyArray)) ="
     }
     
     private func description(ops: [Op]) -> (result: String?, remainingOps: [Op]) {
-        if !opStack.isEmpty {
+        if !ops.isEmpty {
             var remainingOps = ops
             let op = remainingOps.removeLast()
             switch op {
@@ -88,8 +92,8 @@ class CalculatorBrain {
                 let op1Description = description(remainingOps)
                 if let operand1 = op1Description.result {
                     let op2Description = description(op1Description.remainingOps)
+                    var binaryHistory: String
                     if let operand2 = op2Description.result {
-                        var binaryHistory: String
                         if binaryOperation == "−" || binaryOperation == "÷" {
                             binaryHistory = "(\(operand2)\(binaryOperation)\(operand1))"
                         } else {
@@ -100,6 +104,9 @@ class CalculatorBrain {
                         }
                         
                         return (binaryHistory, op2Description.remainingOps)
+                    } else {
+                        binaryHistory = "\(operand1)\(binaryOperation)?"
+                        return (binaryHistory, [])
                     }
                 }
             }
