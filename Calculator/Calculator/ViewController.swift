@@ -19,6 +19,19 @@ class ViewController: UIViewController {
         displayValue = 0
         history.text! = " "
         calculatorBrain.clearOpStack()
+        calculatorBrain.clearVariableValues()
+    }
+    
+    @IBAction func storeVariable() {
+        if let variableValue = displayValue, result = calculatorBrain.setVariable("M", value: variableValue) {
+            displayValue = result
+        }
+        userIsInMiddleOfTypingNumber = false
+    }
+    
+    @IBAction func retrieveVariable() {
+        calculatorBrain.pushOperand("M")
+        updateHistory()
     }
     
     @IBAction func appendDigit(sender: UIButton) {
@@ -33,6 +46,8 @@ class ViewController: UIViewController {
             display.text! = digit
             userIsInMiddleOfTypingNumber = true
         }
+        
+        updateHistory()
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -45,7 +60,7 @@ class ViewController: UIViewController {
             display.text! = " "
         }
         
-        history.text! = calculatorBrain.description
+        updateHistory()
     }
 
     @IBAction func enter() {
@@ -64,5 +79,9 @@ class ViewController: UIViewController {
             display.text = "\(newValue!)"
             userIsInMiddleOfTypingNumber = false
         }
+    }
+    
+    private func updateHistory() {
+        history.text! = calculatorBrain.description
     }
 }

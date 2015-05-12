@@ -118,6 +118,8 @@ class CalculatorBrain {
         let (result, remainder) = evaluate(opStack)
         if let evaluateResult = result {
             println("\(opStack) = \(evaluateResult) with remainder \(remainder)")
+        } else {
+            println("\(opStack) = remainer \(remainder)")
         }
         return result
     }
@@ -156,10 +158,19 @@ class CalculatorBrain {
     }
     
     private var opStack = [Op]()
-    var variableValues = [String: Double]()
+    private var variableValues = [String: Double]()
     
     func clearOpStack() {
         opStack.removeAll(keepCapacity: false)
+    }
+    
+    func clearVariableValues() {
+        variableValues.removeAll(keepCapacity: false)
+    }
+    
+    func setVariable(variable: String, value: Double) -> Double? {
+        variableValues[variable] = value
+        return evaluate()
     }
     
     func pushOperand(symbol: String) -> Double? {
