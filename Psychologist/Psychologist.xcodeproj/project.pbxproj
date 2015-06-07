@@ -15,6 +15,8 @@
 		FA256A0E1B24EED7006A7050 /* PsychologistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA256A0D1B24EED7006A7050 /* PsychologistTests.swift */; };
 		FA256A191B24F18A006A7050 /* HappinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA256A171B24F18A006A7050 /* HappinessViewController.swift */; };
 		FA256A1A1B24F18A006A7050 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA256A181B24F18A006A7050 /* FaceView.swift */; };
+		FA256A1C1B24FFA0006A7050 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA256A1B1B24FFA0006A7050 /* TextViewController.swift */; };
+		FA256A1E1B2500F4006A7050 /* DiagnosedHappinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA256A1D1B2500F4006A7050 /* DiagnosedHappinessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		FA256A0D1B24EED7006A7050 /* PsychologistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologistTests.swift; sourceTree = "<group>"; };
 		FA256A171B24F18A006A7050 /* HappinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HappinessViewController.swift; sourceTree = "<group>"; };
 		FA256A181B24F18A006A7050 /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		FA256A1B1B24FFA0006A7050 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		FA256A1D1B2500F4006A7050 /* DiagnosedHappinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosedHappinessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				FA256A171B24F18A006A7050 /* HappinessViewController.swift */,
+				FA256A1D1B2500F4006A7050 /* DiagnosedHappinessViewController.swift */,
+				FA256A1B1B24FFA0006A7050 /* TextViewController.swift */,
 				FA256A181B24F18A006A7050 /* FaceView.swift */,
 				FA2569F91B24EED7006A7050 /* PsychologistViewController.swift */,
 				FA2569FB1B24EED7006A7050 /* Main.storyboard */,
@@ -218,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA256A1C1B24FFA0006A7050 /* TextViewController.swift in Sources */,
 				FA2569FA1B24EED7006A7050 /* PsychologistViewController.swift in Sources */,
 				FA256A191B24F18A006A7050 /* HappinessViewController.swift in Sources */,
+				FA256A1E1B2500F4006A7050 /* DiagnosedHappinessViewController.swift in Sources */,
 				FA2569F81B24EED7006A7050 /* AppDelegate.swift in Sources */,
 				FA256A1A1B24F18A006A7050 /* FaceView.swift in Sources */,
 			);

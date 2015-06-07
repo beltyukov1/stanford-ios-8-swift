@@ -20,7 +20,7 @@ class FaceView: UIView {
     @IBInspectable
     var color = UIColor.blueColor() { didSet { self.setNeedsDisplay() } }
     @IBInspectable
-    var scale: CGFloat = 0.9 { didSet { self.setNeedsDisplay() } }
+    var scale: CGFloat = 0.8 { didSet { self.setNeedsDisplay() } }
     
     var faceCenter: CGPoint {
         return convertPoint(center, fromView: superview)
